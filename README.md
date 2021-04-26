@@ -1,2 +1,2 @@
-# DOAN-GK-THKTLT
-Đồ án giữa kỳ
+# midterm_project_thktlt
+
