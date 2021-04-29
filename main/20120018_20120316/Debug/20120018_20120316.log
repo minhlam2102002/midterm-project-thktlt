@@ -1,17 +1,17 @@
 ﻿  Function.cpp
-C:\Users\MINH LAM\source\repos\main\20120018_20120316\Function.cpp(9,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\MINH LAM\source\repos\main\20120018_20120316\Function.cpp(34,32): warning C4018: '<': signed/unsigned mismatch
-C:\Users\MINH LAM\source\repos\main\20120018_20120316\Function.cpp(36,32): warning C4018: '<': signed/unsigned mismatch
-C:\Users\MINH LAM\source\repos\main\20120018_20120316\Function.cpp(56,33): warning C4018: '<': signed/unsigned mismatch
-  Operator.cpp
-C:\Users\MINH LAM\source\repos\main\20120018_20120316\Operator.cpp(14,29): warning C4018: '>': signed/unsigned mismatch
-C:\Users\MINH LAM\source\repos\main\20120018_20120316\Operator.cpp(32,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\MINH LAM\source\repos\main\20120018_20120316\Operator.cpp(50,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\MINH LAM\source\repos\main\20120018_20120316\Operator.cpp(67,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\MINH LAM\source\repos\main\20120018_20120316\Operator.cpp(84,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\MINH LAM\source\repos\main\20120018_20120316\Operator.cpp(104,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\MINH LAM\source\repos\main\20120018_20120316\Operator.cpp(155,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\MINH LAM\source\repos\main\20120018_20120316\Operator.cpp(171,31): warning C4018: '>': signed/unsigned mismatch
+C:\Users\MINH LAM\OneDrive\Desktop\midterm_project_thktlt\main\20120018_20120316\Function.cpp(9,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\MINH LAM\OneDrive\Desktop\midterm_project_thktlt\main\20120018_20120316\Function.cpp(34,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\MINH LAM\OneDrive\Desktop\midterm_project_thktlt\main\20120018_20120316\Function.cpp(36,32): warning C4018: '<': signed/unsigned mismatch
+C:\Users\MINH LAM\OneDrive\Desktop\midterm_project_thktlt\main\20120018_20120316\Function.cpp(56,33): warning C4018: '<': signed/unsigned mismatch
   main.cpp
+  Operator.cpp
+C:\Users\MINH LAM\OneDrive\Desktop\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(14,29): warning C4018: '>': signed/unsigned mismatch
+C:\Users\MINH LAM\OneDrive\Desktop\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(32,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\MINH LAM\OneDrive\Desktop\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(50,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\MINH LAM\OneDrive\Desktop\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(67,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\MINH LAM\OneDrive\Desktop\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(84,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\MINH LAM\OneDrive\Desktop\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(104,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\MINH LAM\OneDrive\Desktop\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(155,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\MINH LAM\OneDrive\Desktop\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(171,31): warning C4018: '>': signed/unsigned mismatch
   Generating Code...
-  20120018_20120316.vcxproj -> C:\Users\MINH LAM\source\repos\main\Debug\20120018_20120316.exe
+  20120018_20120316.vcxproj -> C:\Users\MINH LAM\OneDrive\Desktop\midterm_project_thktlt\main\Debug\20120018_20120316.exe
