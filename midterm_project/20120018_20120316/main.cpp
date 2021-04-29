@@ -25,4 +25,5 @@ int main() {
 	//delete[]b.data;
 	//01
 	//1111111111
+	cout << "hello";
 }
