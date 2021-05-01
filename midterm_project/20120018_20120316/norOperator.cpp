@@ -10,7 +10,6 @@ BigInt operator+(BigInt num1, BigInt num2) {
 			carry = 1;
 		else carry = 0;
 		res.data[i] = (num1.data[i] + num2.data[i]+carry)%256;
-		
 	}
 	return res;
 }
