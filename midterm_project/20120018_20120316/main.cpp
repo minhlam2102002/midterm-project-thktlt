@@ -18,10 +18,11 @@ int main() {
 	// 2 byte 
 	// 1111 1110 = -2
 	BigInt a, b;
-	decimalToBigInt("-7", a);
-	decimalToBigInt("-13", b);
+	decimalToBigInt("252", a);
+	decimalToBigInt("-252", b);
 	//countDecBytes(a, b);
 	a.Print();
+//<<<<<<< HEAD
 	b.Print();
 
 	BigInt bina, binb;
@@ -30,4 +31,14 @@ int main() {
 	binaryToBigInt("10010101", binb);
 	bina.Print();
 	binb.Print();
+	//binaryToBigInt("01101110", b);
+	//BigInt c = a + b;
+	//a.Print();
+	//b.Print();
+	//c.Print();
+	//delete[]a.data;
+	//delete[]b.data;
+	//01
+	//1111111111
+	cout << "hello";
 }
