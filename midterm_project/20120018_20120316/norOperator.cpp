@@ -32,3 +32,31 @@ BigInt operator*(BigInt num1, BigInt num2) {
 	BigInt res;
 	return res;
 }
+BigInt operator/(BigInt num1, BigInt num2) {
+	return num1;
+}
+
+BigInt operator%(BigInt num1, BigInt num2) {
+	return num1;
+}
+
+string addString(string num1, string num2){
+	string res = "";
+	while (num1.length() < num2.length()) {
+		num1 = "0" + num1;
+	}
+	while (num2.length() < num1.length()) {
+		num2 = "0" + num2;
+	}
+	int carry = 0;
+	for (int i = num1.length() - 1; i >= 0; i--){
+		int tmp = num1[i] - '0' + num2[i] - '0' + carry;
+		carry = tmp / 10;
+		tmp = tmp % 10;
+		res = (char)(tmp + '0') + res;
+	}
+	if (carry > 0) {
+		res = "1" + res;
+	}
+	return res;
+}

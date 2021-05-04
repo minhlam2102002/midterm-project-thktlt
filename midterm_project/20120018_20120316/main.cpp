@@ -7,38 +7,30 @@
 using namespace std;
 
 int main() {
-	//string dec = "-300", bin;
-	//BigInt x;
-	//negDecimalToBinary(dec, bin);
-	//cout << bin << endl;
-	//decimalToBigInt(dec, x);
-	//x.Print();
-	// 1byte -> -2^7 -> 2^7-1
-	//          -128 -> 127
-	// 2 byte 
-	// 1111 1110 = -2
-	BigInt a, b;
-	decimalToBigInt("252", a);
-	decimalToBigInt("-252", b);
-	//countDecBytes(a, b);
-	a.Print();
-//<<<<<<< HEAD
-	b.Print();
+	//BigInt a, b;
+	//decimalToBigInt("252", a);
+	//decimalToBigInt("-252", b);
+	//a.Print();
+	//b.Print();
 
-	BigInt bina, binb;
-	bina.nByte = binb.nByte = max(countBinBytes("01010"),countBinBytes("10010101"));
-	binaryToBigInt("10101010", bina);
-	binaryToBigInt("10010101", binb);
-	bina.Print();
-	binb.Print();
-	//binaryToBigInt("01101110", b);
+	//BigInt bina, binb;
+	//binaryToBigInt("110011011111", bina);
+	//binaryToBigInt("10010101", binb);
+
+	//cout << BigIntToBinary(bina) << endl;
+	//cout << binaryToDecimal("101") << endl;
+	//bina.Print();
+	//binb.Print();
+
+	//cout<<binaryToDecimal("01101010111110111111")<<endl;
+	string bin="";
+	//posDecimalToBinary("3385", bin);
+	//cout << bin << endl;
+	//cout << decimalToBinary("8793278316383117319") << endl;
 	//BigInt c = a + b;
 	//a.Print();
 	//b.Print();
 	//c.Print();
 	//delete[]a.data;
 	//delete[]b.data;
-	//01
-	//1111111111
-	cout << "hello";
 }

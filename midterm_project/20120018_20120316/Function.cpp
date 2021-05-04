@@ -1,35 +1,41 @@
 #include "Function.h"
+/*
+	Note:
+	- Binary to 
 
-bool isNeg(BigInt& number) {
-	if (number.data[number.nByte - 1] > 128) {
-		return true;
-	}
-	return false;
-}
+*/
+
 bool posDecimalToBinary(string number, string &res) {
 	res = "";
-	while (number.size() > 1 || stoi(number) >= 2) {
-		res += ((number.back() - '0') % 2 == 0) ? '0' : '1';
-		string div = "";
-		int firstDigits = 0;
-		for (int i = 0; i < number.size(); i++) {
-			firstDigits = firstDigits * 10 + number[i] - '0';
-			if (number[i] == '1' && i < number.size() - 1) {
-				firstDigits = firstDigits * 10 + number[i + 1] - '0';
-				i++;
-			}
-			div += to_string(firstDigits / 2);
-			firstDigits %= 2;
-		}
-		number = div;
-	}
+	//number = 211/2
+	//		   105
+	//while (number.size() > 1 || number >= "2") {
+	//	res += ((number.back() - '0') % 2 == 0) ? '0' : '1';
+	//	string div = "";
+	//	int firstDigits = 0;
+	//	for (int i = 0; i < number.size(); i++) {
+	//		firstDigits = firstDigits * 10 + number[i] - '0';
+	//		if (number[i] == '1' && i < number.size() - 1) {
+	//			//div += '0';
+	//			firstDigits = firstDigits * 10 + number[i + 1] - '0';
+	//			i++;	
+	//		}
+	//		div += to_string(firstDigits / 2);
+	//		firstDigits %= 2;
+	//	}
+	//	/*while (div.size() > 0 && div[0] == '0') {
+	//		div.erase(0, 1);
+	//	}*/
+	//	//cout << div << endl;
+	//	number = div;
+	//}
 	res += number.back();
-	if (res.back() == '1') {
-		res += '0';
-	}
-	while (res.size() % 8 != 0) {
-		res += '0';
-	}
+	//if (res.back() == '1') {
+	//	res += '0';
+	//}
+	//while (res.size() % 8 != 0) {
+	//	res += '0';
+	//}
 	reverse(res.begin(), res.end());
 	return true;
 }
@@ -53,21 +59,29 @@ bool negDecimalToBinary(string number, string& res) {
 	}
 	return true;
 }
+string decimalToBinary(string dec) {
+	string bin;
+	if (dec[0] == '-') {
+		negDecimalToBinary(dec, bin);
+		while (bin.size() < 128) {
+			bin = '1' + bin;
+		}
+	}
+	else {
+		posDecimalToBinary(dec, bin);
+	}
+	return bin;
+}
 bool decimalToBigInt(string number, BigInt& res) {
 	string bin;
 	if (number[0] == '-') {
 		negDecimalToBinary(number, bin);
-		res.nByte = countBinBytes(bin);
 		while (bin.size() < res.nByte * 8) {
 			bin = '1' + bin;
 		}
 	}
 	else {
 		posDecimalToBinary(number, bin);
-		res.nByte = countBinBytes(bin);
-		if (bin.size() % 8 == 0 && bin[0] == '1') {
-			res.nByte++;
-		}
 		while (bin.size() < res.nByte * 8) {
 			bin = '0' + bin;
 		}
@@ -76,14 +90,16 @@ bool decimalToBigInt(string number, BigInt& res) {
 	return true;
 }
 bool binaryToBigInt(string number, BigInt& res) {
-	while (number.size() < res.nByte * 8) {
-		number = number[0] + number;
+	while (number.size()%8 != 0) {
+		number = '0' + number;
 	}
 	res.data = new BYTE[res.nByte];
+	for (int i = 0; i < res.nByte; i++) {
+		res.data[i] = 0;
+	}
 	int n = number.size();
 	for (int i = 0; i < res.nByte; i++) {
 		int Pow = 1;
-		res.data[i] = 0;
 		for (int j = n - i*8 - 1; j >= 0; j--) {
 			res.data[i] += Pow * (number[j] == '1');
 			Pow *= 2;
@@ -92,10 +108,32 @@ bool binaryToBigInt(string number, BigInt& res) {
 	return true;
 }
 
-int countBinBytes(string number) {
-	return number.size() / 8 + (number.size() % 8 != 0);
-}
 
-int countDecBytes(string number) {
-	return 0;
+string BigIntToBinary(BigInt number) {
+	string res;
+	for (int i = 0; i < number.nByte; i++) {
+		int bigI = number.data[i];
+		while (bigI > 0) {
+			res += char(bigI % 2 + '0');
+			bigI /= 2;
+		}
+	}
+	reverse(res.begin(), res.end());
+	return res;
+}
+string binaryToDecimal(string bin) {
+	string dec = "0";
+	string Pow = "1";
+	for (int i = bin.size() - 1; i >= 0; i--)
+	{
+		if (bin[i] == '1')
+		{
+			dec = addString(dec, Pow);
+		}
+		Pow = addString(Pow, Pow);
+	}
+	return dec;
+}
+string BigIntToDecimal(BigInt number) {
+	return binaryToDecimal(BigIntToBinary(number));
 }
