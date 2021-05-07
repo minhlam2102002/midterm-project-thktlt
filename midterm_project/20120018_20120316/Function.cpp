@@ -9,26 +9,25 @@ bool posDecimalToBinary(string number, string &res) {
 	res = "";
 	//number = 211/2
 	//		   105
-	//while (number.size() > 1 || number >= "2") {
-	//	res += ((number.back() - '0') % 2 == 0) ? '0' : '1';
-	//	string div = "";
-	//	int firstDigits = 0;
-	//	for (int i = 0; i < number.size(); i++) {
-	//		firstDigits = firstDigits * 10 + number[i] - '0';
-	//		if (number[i] == '1' && i < number.size() - 1) {
-	//			//div += '0';
-	//			firstDigits = firstDigits * 10 + number[i + 1] - '0';
-	//			i++;	
-	//		}
-	//		div += to_string(firstDigits / 2);
-	//		firstDigits %= 2;
-	//	}
-	//	/*while (div.size() > 0 && div[0] == '0') {
-	//		div.erase(0, 1);
-	//	}*/
-	//	//cout << div << endl;
-	//	number = div;
-	//}
+	while (number.size() > 1 || number >= "2") {
+		res += ((number.back() - '0') % 2 == 0) ? '0' : '1';
+		string div = "";
+		int firstDigits = 0;
+		for (int i = 0; i < number.size(); i++) {
+			firstDigits = firstDigits * 10 + number[i] - '0';
+			if (number[i] == '1' && i < number.size() - 1) {
+				div += '0';
+				firstDigits = firstDigits * 10 + number[i + 1] - '0';
+				i++;	
+			}
+			div += to_string(firstDigits / 2);
+			firstDigits %= 2;
+		}
+		while (div.size() > 0 && div[0] == '0') {
+			div.erase(0, 1);
+		}
+		number = div;
+	}
 	res += number.back();
 	//if (res.back() == '1') {
 	//	res += '0';
@@ -110,18 +109,25 @@ bool binaryToBigInt(string number, BigInt& res) {
 
 
 string BigIntToBinary(BigInt number) {
-	string res;
-	for (int i = 0; i < number.nByte; i++) {
+	string res="";
+	for (int i = 0; i < 16; i++) {
 		int bigI = number.data[i];
+		if (bigI == 0) {
+			res += "00000000";
+		}
 		while (bigI > 0) {
 			res += char(bigI % 2 + '0');
 			bigI /= 2;
 		}
+		while (res.size() % 8 != 0) {
+			res += '0';
+		}
 	}
+	while (res.size() < 128) res += '0';
 	reverse(res.begin(), res.end());
 	return res;
 }
-string binaryToDecimal(string bin) {
+string posBinaryToDecimal(string bin) {
 	string dec = "0";
 	string Pow = "1";
 	for (int i = bin.size() - 1; i >= 0; i--)
@@ -134,6 +140,29 @@ string binaryToDecimal(string bin) {
 	}
 	return dec;
 }
+string negBinaryToDecimal(string bin) {
+	for (int i = 0; i < bin.size(); i++) {
+		bin[i] = (bin[i] == '0') ? '1' : '0';
+	}
+	for (int i = bin.size() - 1; i >= 0; i--) {
+		if (bin[i] == '1') {
+			bin[i] = '0';
+		}
+		else {
+			bin[i] = '1';
+			break;
+		}
+	}
+	return posBinaryToDecimal(bin);
+}
+string binaryToDecimal(string bin) {
+	if (bin.size() > 127 && bin[0] == '1')
+		return negBinaryToDecimal(bin);
+	else {
+		return posBinaryToDecimal(bin);
+	}
+}
+
 string BigIntToDecimal(BigInt number) {
 	return binaryToDecimal(BigIntToBinary(number));
 }
