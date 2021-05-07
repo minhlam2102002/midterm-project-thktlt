@@ -1,2 +1,8 @@
-﻿  main.cpp
-LINK : fatal error LNK1168: cannot open C:\Users\MINH LAM\OneDrive\Desktop\midterm_project_thktlt\midterm_project\Debug\20120018_20120316.exe for writing
+﻿  Function.cpp
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\midterm_project\20120018_20120316\Function.cpp(16,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\midterm_project\20120018_20120316\Function.cpp(18,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\midterm_project\20120018_20120316\Function.cpp(47,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\midterm_project\20120018_20120316\Function.cpp(78,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\midterm_project\20120018_20120316\Function.cpp(84,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\midterm_project\20120018_20120316\Function.cpp(144,20): warning C4018: '<': signed/unsigned mismatch
+  20120018_20120316.vcxproj -> C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\midterm_project\Debug\20120018_20120316.exe
