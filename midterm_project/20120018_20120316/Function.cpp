@@ -7,8 +7,6 @@
 
 bool posDecimalToBinary(string number, string &res) {
 	res = "";
-	//number = 211/2
-	//		   105
 	while (number.size() > 1 || number >= "2") {
 		res += ((number.back() - '0') % 2 == 0) ? '0' : '1';
 		string div = "";
@@ -29,12 +27,6 @@ bool posDecimalToBinary(string number, string &res) {
 		number = div;
 	}
 	res += number.back();
-	//if (res.back() == '1') {
-	//	res += '0';
-	//}
-	//while (res.size() % 8 != 0) {
-	//	res += '0';
-	//}
 	reverse(res.begin(), res.end());
 	return true;
 }
