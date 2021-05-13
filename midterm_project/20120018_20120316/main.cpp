@@ -7,14 +7,17 @@
 using namespace std;
 
 int main() {
-	//BigInt a, b;
-	//decimalToBigInt("252", a);
-	//decimalToBigInt("-252", b);
-	//a.Print();
-	//b.Print();
+	BigInt a, b;
+	decimalToBigInt("1111", a);
+	decimalToBigInt("555", b);
+	BigInt c;
+	c = a / b;
+	a.Print();
+	b.Print();
+	c.Print();
 
 	//BigInt bina, binb;
-	//binaryToBigInt("110011011111", bina);
+	//binaryToBigInt("110011011111", bina); 
 	//binaryToBigInt("10010101", binb);
 
 	//cout << BigIntToBinary(bina) << endl;
@@ -23,9 +26,7 @@ int main() {
 	//binb.Print();
 
 	//cout<<binaryToDecimal("01101010111110111111")<<endl;
-	string bin="";
-	//posDecimalToBinary("3385", bin);
-	//cout << bin << endl;
+	//cout << decimalToBinary("3385");
 	//cout << decimalToBinary("8793278316383117319") << endl;
 	//BigInt c = a + b;
 	//a.Print();
