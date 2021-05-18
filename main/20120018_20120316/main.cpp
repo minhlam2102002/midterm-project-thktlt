@@ -40,9 +40,10 @@ void check() {
     cout << ". After: " << a.data << endl;*/
     
 }
-int main()
+int main(int argc, string argv[])
 {
-    //freopen("input.txt", "r", stdin);
-    //freopen("output.txt", "w", stdout);
-    check();
+    freopen(argv[1].c_str(), "r", stdin);
+    freopen(argv[2].c_str(), "w", stdout);
+    //check();
+    
 }
