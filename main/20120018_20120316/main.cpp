@@ -1,6 +1,7 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include <string>
 #include <cstdio>
+#include <sstream>
 #include "Operator.h"
 #include "Struct.h"
 #include "Function.h"
@@ -40,9 +41,18 @@ void check() {
     cout << ". After: " << a.data << endl;*/
     
 }
-int main()
+int main(int argc, char** argv)
 {
-    //freopen("input.txt", "r", stdin);
-    //freopen("output.txt", "w", stdout);
-    check();
+    char* inp = argv[1];
+    char* out = argv[2];
+    freopen(inp, "r", stdin);
+    freopen(out, "w", stdout);
+    string line, word;
+    while (getline(cin, line)) {
+        stringstream ss(line);
+        while (ss >> word) {
+            cout << word << ' ';
+        }
+        cout << endl;
+    }
 }
