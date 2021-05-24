@@ -77,7 +77,6 @@ BigInt operator^(BigInt& num1, BigInt& num2) {
         num2.data2 = toBinary(num2).data2;
     }
     BigInt res;
-    //res.sign = 1;
     res.base = 2;
     res.data2 = "";
     addZero(num1, num2);
@@ -93,7 +92,7 @@ BigInt operator~(BigInt number) {
             // ~x = -x-1
             number.sign = 1; // -x
             BigInt One;
-            One.SetData("1");
+            One.SetData(10,"1");
             return number - One; //-x-1
         }
         else

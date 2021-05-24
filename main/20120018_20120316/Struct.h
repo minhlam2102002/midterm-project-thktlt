@@ -8,6 +8,7 @@ struct BigInt
     int base = 10;
     int numBit = 4;//000000010 -> 1111111101
     string data, data2; // data in Decimal, data in Binary
+
     BigInt& operator=(const BigInt &number) {
         sign = number.sign;
         base = number.base;
@@ -15,28 +16,23 @@ struct BigInt
         data2 = number.data2;
         return *this;
     }
-    void Read()
-    {
-        cin >> data;
-        if (data[0] == '-')
-        {
-            sign = -1;
-            data.erase(0, 1);
-        }
-        else {
-            sign = 1;
-        }
-    }
-    void SetData(string number) {
+    void SetData(int numBase, string number) {
         data = number;
-        if (number[0] == '-')
-        {
-            sign = -1;
-            data.erase(0, 1);
+        base = numBase;
+        if (base == 2) {
+            data2 = number;
         }
-        else
-        {
-            sign = 1;
+        else if (base == 10) {
+            data = number;
+            if (number[0] == '-')
+            {
+                sign = -1;
+                data.erase(0, 1);
+            }
+            else
+            {
+                sign = 1;
+            }
         }
     }
     string PrintData() {

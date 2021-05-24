@@ -1,6 +1,8 @@
 ﻿#define _CRT_SECURE_NO_WARNINGS
 #include <string>
 #include <cstdio>
+#include <sstream>
+#include<vector>
 #include "Operator.h"
 #include "Struct.h"
 #include "Function.h"
@@ -11,8 +13,6 @@ void check() {
     // so thap phan == 0 thi not ra 1
     // input so thap phan < 0 thi doi sang bu 2 roi xu ly cac phep tinh bit
     BigInt a, b;
-    a.SetData("-2");
-    b.SetData("3");
     int bint = 3;
     BigInt bin;
     bin.base = 2;
@@ -40,10 +40,68 @@ void check() {
     cout << ". After: " << a.data << endl;*/
     
 }
-int main(int argc, string argv[])
+int main(int argc, char** argv)
 {
-    freopen(argv[1].c_str(), "r", stdin);
-    freopen(argv[2].c_str(), "w", stdout);
-    //check();
-    
+    char* inp = argv[1];
+    char* out = argv[2];
+    freopen(inp, "r", stdin);
+    freopen(out, "w", stdout);
+    string line, word;
+    int base;
+    while (getline(cin, line)) {
+        BigInt num,num1,num2;
+        vector<string> push;
+        stringstream ss(line);
+        while (ss >> word) {
+            push.push_back(word) ;
+        }
+        base = stoi(push[0]);
+        //cout << endl << push[2] << endl;
+
+        if (push[0] == "10" && push[1] == "2") {
+            num.SetData(10,push[2]);
+            cout << toBinary(num).PrintData()<< endl;
+        }
+        else if (push[0] == "2" && push[1] == "10") {
+            num.SetData(2,push[2]);
+            cout << toDecimal(num).PrintData()<< endl;
+        }
+        else if (push[1] == "~") {
+            num.SetData(base, push[2]);
+            cout << (~num).PrintData() << endl;
+        }
+        else {
+            num1.SetData(base, push[1]);
+            num2.SetData(base, push[3]);
+            if (push[2] == "+")
+                cout << (num1 + num2).PrintData() << endl;
+            else if (push[2] == "-")
+                cout << (num1 - num2).PrintData() << endl;
+            else if (push[2] == "*")
+                cout << (num1 * num2).PrintData() << endl;
+            else if (push[2] == "%")
+                cout << (num1 % num2).PrintData() << endl;
+            else if (push[2] == ">>") {
+                int move = stoi(push[3]);
+                cout << (num1 >> move).PrintData() << endl;
+            }
+            else if (push[2] == "<<") {
+                int move = stoi(push[3]);
+                cout << (num1 << move).PrintData() << endl;
+            }
+            else if (push[2] == "&") {
+               cout << (num1 & num2).PrintData() << endl;
+            }
+            else if (push[2] == "&") {
+                cout << (num1 & num2).PrintData() << endl;
+            }
+            else if (push[2] == "|") {
+                cout << (num1 | num2).PrintData()<<endl;
+            }
+            else if (push[2] == "^") { 
+                cout << (num1 ^ num2).PrintData()<<endl;
+            }
+        }
+    }
+    //cout << "done";
 }

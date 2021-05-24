@@ -80,8 +80,8 @@ BigInt toDecimal(BigInt number)
     res.sign = 1;
     res.base = 10;
     res.data2 = number.data2;
-    two.SetData("2");
-    Pow2.SetData("1");
+    two.SetData(10,"2");
+    Pow2.SetData(10,"1");
     for (int i = number.data2.size() - 1; i >= 0; i--)
     {
         if (number.data2[i] == '1')
