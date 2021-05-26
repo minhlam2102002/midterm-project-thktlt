@@ -18,7 +18,7 @@ struct BigInt
         data = number;
         base = numBase;
         sign = 1;
-        if(base == 2 && number.size() >= 128 && number[0] == '1'){
+        if(base == 2 && number.size() >= numBit && number[0] == '1'){
             sign = -1;
         }
         if (base == 10 && number[0] == '-'){

@@ -29,7 +29,8 @@ void addZero(BigInt& num1, BigInt& num2) {
 }
 BigInt toBinary(BigInt number)
 {
-    BigInt res;
+    BigInt res, One;
+    One.SetData(2, "1");
     res.sign = number.sign;
     res.base = 2;
     while (number.data != "0")
@@ -41,33 +42,37 @@ BigInt toBinary(BigInt number)
     reverse(res.data.begin(), res.data.end());
     //2 -> 0010 -> 1101 -> 1110
     if (res.sign == -1) {
-        bool flag = false;
-        while (res.data.size() < res.numBit) {
-            res.data = "0" + res.data;
+        for (int i = 0; i < res.data.size(); i++) {
+            res.data[i] = (res.data[i] == '0') ? '1' : '0';
         }
-        res = ~res;
-        for (int i = res.data.size() - 1; i >= 0; i--) {
-            if (res.data[i] == '0') {
+        while(res.data.size() < res.numBit){
+            res.data = "1" + res.data;
+        }
+        for(int i = res.data.size() - 1; i >= 0; i--){
+            if(res.data[i] == '0'){
                 res.data[i] = '1';
-                flag = true;
                 break;
             }
-            else {
+            else{
                 res.data[i] = '0';
             }
-        }
-        if (flag == false) {
-            res.data = "1" + res.data;
         }
     }
     return res;
 }
 BigInt toDecimal(BigInt number)
 {
-    // number.base = 2, xet data2
-    BigInt two, Pow2, res;
-    res.sign = number.sign;
+    BigInt two, Pow2, res, One;
+    One.SetData(10, "1");
     res.base = 10;
+    res.sign = number.sign;
+    int Sign = res.sign;
+    if(res.sign == -1){
+        number = ~number;
+        number = number + One;  
+    }
+    // 0011 = 1100 = 1101 = -3
+    // 1101 = 0010 = 0011 = 3
     two.SetData(10,"2");
     Pow2.SetData(10,"1");
     for (int i = number.data.size() - 1; i >= 0; i--)
@@ -78,6 +83,7 @@ BigInt toDecimal(BigInt number)
         }
         Pow2 = Pow2 * two;
     }
+    res.sign = Sign; 
     return res;
 }
 BigInt Max(BigInt& num1, BigInt& num2) {

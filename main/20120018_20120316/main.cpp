@@ -10,8 +10,8 @@ using namespace std;
 
 int main()//int argc, char** argv)
 {
-    const char* inp = "inputTuan.txt";//argv[1];
-    const char* out = "outputTuan.txt";//argv[2];
+    const char* inp = "input.txt";//argv[1];
+    const char* out = "output.txt";//argv[2];
     freopen(inp, "r", stdin);
     freopen(out, "w", stdout);
     string line, word;

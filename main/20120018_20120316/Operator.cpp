@@ -198,17 +198,17 @@ BigInt operator+(BigInt num1, BigInt num2)
         num1 = toDecimal(num1);
         num2 = toDecimal(num2);
     }
-    if (num1.sign == -1 && num2.sign == -1) //am + am
-    {
-        res.sign = -1;
-    }
-    else if (num1.sign == 1 && num2.sign == -1) { // duong + am
+    if (num1.sign == 1 && num2.sign == -1) { // duong + am
         num2.sign = 1;
         return num1 - num2;
     }
-    else if (num1.sign == -1 && num2.sign == 1) { // am + duong
+    if (num1.sign == -1 && num2.sign == 1) { // am + duong
         num1.sign = 1;
         return num2 - num1;
+    }
+    if (num1.sign == -1 && num2.sign == -1) //am + am
+    {
+        res.sign = -1;
     }
     else //duong + duong
     {

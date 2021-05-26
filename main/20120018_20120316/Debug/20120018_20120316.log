@@ -1,2 +1,18 @@
-﻿  main.cpp
+﻿  Function.cpp
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Struct.h(21,39): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Function.cpp(9,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Function.cpp(45,27): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Function.cpp(48,31): warning C4018: '<': signed/unsigned mismatch
+  Operator.cpp
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Struct.h(21,39): warning C4018: '>=': signed/unsigned mismatch
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(51,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(72,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(93,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(108,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(170,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(186,31): warning C4018: '>': signed/unsigned mismatch
+  main.cpp
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Struct.h(21,39): warning C4018: '>=': signed/unsigned mismatch
+  Generating Code...
+C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Function.cpp(113): warning C4715: 'Abs': not all control paths return a value
   20120018_20120316.vcxproj -> C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\Debug\20120018_20120316.exe
