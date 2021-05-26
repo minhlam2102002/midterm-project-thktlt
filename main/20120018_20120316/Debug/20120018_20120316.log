@@ -1,12 +1,2 @@
-﻿  Operator.cpp
-C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(14,29): warning C4018: '>': signed/unsigned mismatch
-C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(32,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(50,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(67,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(83,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(103,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(158,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Operator.cpp(174,31): warning C4018: '>': signed/unsigned mismatch
-  main.cpp
-  Generating Code...
+﻿  main.cpp
   20120018_20120316.vcxproj -> C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\Debug\20120018_20120316.exe

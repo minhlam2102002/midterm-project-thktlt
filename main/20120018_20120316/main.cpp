@@ -40,10 +40,6 @@ int main()//int argc, char** argv)
         else {
             num1.SetData(base, push[1]);
             num2.SetData(base, push[3]);
-            if(base == 2){
-                num1.data = toDecimal(num1).data;
-                num2.data = toDecimal(num2).data;
-            }
             if (push[2] == "+")
                 cout << (num1 + num2).PrintData() << endl;
             else if (push[2] == "-")

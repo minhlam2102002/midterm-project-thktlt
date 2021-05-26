@@ -1,115 +1,127 @@
 #include "Operator.h"
 #include "Struct.h"
 
-BigInt operator<<(BigInt& number, int move) {
-    if (number.data2.size() == 0) {
-        number.data2 = toBinary(number).data2;
-    }
+BigInt operator<<(BigInt &number, int move) {
     BigInt res;
+    res.sign = number.sign;
     res.base = number.base;
-    res.data2 = number.data2;
+    if(number.base == 10){
+        number = toBinary(number);
+    }
+    res.data = number.data;
     while (move--) {
-        res.data2 += '0';
+        res.data += '0';
     }
-    while (res.data2.size() > res.numBit) {
-        res.data2.erase(0, 1);
+    if(res.base == 10){
+        res.data = toDecimal(res).data;
     }
-    res.data = toDecimal(res).data;
     return res;
 }
 
 BigInt operator>>(BigInt& number, int move) {
-    if (number.data2.size() == 0) {
-        number.data2 = toBinary(number).data2;
-    }
     BigInt res;
+    res.sign = number.sign;
     res.base = number.base;
-    res.data2 = number.data2;
-    while (move-- && res.data2.size() > 0) {
-        res.data2.pop_back();
+    if(number.base == 10){
+        number = toBinary(number);
     }
-    res.data = toDecimal(res).data;
-    while (res.data2.size() < res.numBit) {
-        res.data2 = "0" + res.data2;
+    res.data = number.data;
+    while (move-- && res.data.size() > 0) {
+        res.data.pop_back();
+    }
+    if(res.base == 10){
+        res.data = toDecimal(res).data;
     }
     return res;
 }
 
 BigInt operator&(BigInt &num1, BigInt &num2) {
-    if (num1.data2.size() == 0) {
-        num1.data2 = toBinary(num1).data2;
-    }
-    if (num2.data2.size() == 0) {
-        num2.data2 = toBinary(num2).data2;
-    }
     BigInt res;
-    //res.sign = 1;
-    res.base = 2;
-    res.data2 = "";
+    res.base = num1.base;
+    if(num1.sign == -1 && num2.sign == -1){
+        res.sign = -1;
+    }else{
+        res.sign = 1;
+    }
+    if(res.base == 10){
+        num1 = toBinary(num1);
+        num2 = toBinary(num2);
+    }
     addZero(num1, num2);
-    for (int i = 0; i < num1.data2.size(); i++) {
-        res.data2 += (num1.data2[i] + num2.data2[i] == '1' + '1') ? "1" : "0";
+    for (int i = 0; i < num1.data.size(); i++) {
+        res.data += (num1.data[i] + num2.data[i] == '1' + '1') ? "1" : "0";
+    }
+    if(res.base == 10){
+        res = toDecimal(res);
     }
     return res;
 }
 BigInt operator|(BigInt& num1, BigInt& num2) {
-    if (num1.data2.size() == 0) {
-        num1.data2 = toBinary(num1).data2;
-    }
-    if (num2.data2.size() == 0) {
-        num2.data2 = toBinary(num2).data2;
-    }
     BigInt res;
-    //res.sign = 1;
-    res.base = 2;
-    res.data2 = "";
+    res.base = num1.base;
+    if(num1.sign == 1 && num2.sign == 1){
+        res.sign = 1;
+    }else{
+        res.sign = -1;
+    }
+    if(res.base == 10){
+        num1 = toBinary(num1);
+        num2 = toBinary(num2);
+    }
     addZero(num1, num2);
-    for (int i = 0; i < num1.data2.size(); i++) {
-        res.data2 += (num1.data2[i] + num2.data2[i] == '0' + '0') ? "0" : "1";
+    for (int i = 0; i < num1.data.size(); i++) {
+        res.data += (num1.data[i] + num2.data[i] == '0' + '0') ? "0" : "1";
+    }
+    if(res.base == 10){
+        res = toDecimal(res);
     }
     return res;
 }
 BigInt operator^(BigInt& num1, BigInt& num2) {
-    if (num1.data2.size() == 0) {
-        num1.data2 = toBinary(num1).data2;
-    }
-    if (num2.data2.size() == 0) {
-        num2.data2 = toBinary(num2).data2;
-    }
     BigInt res;
-    res.base = 2;
-    res.data2 = "";
+    res.base = num1.base;
+    if(num1.sign == 1 && num2.sign == 1){
+        res.sign = 1;
+    }else{
+        res.sign = -1;
+    }
+    if(res.base == 10){
+        num1 = toBinary(num1);
+        num2 = toBinary(num2);
+    }
     addZero(num1, num2);
-    for (int i = 0; i < num1.data2.size(); i++) {
-        res.data2 += (num1.data2[i] == num2.data2[i]) ? "0" : "1";
+    for (int i = 0; i < num1.data.size(); i++) {
+        res.data += (num1.data[i] == num2.data[i]) ? "0" : "1";
+    }
+    if(res.base == 10){
+        res = toDecimal(res);
     }
     return res;
 }
 BigInt operator~(BigInt number) {
-    if (number.base == 10){
-        if (number.sign <= 0) {
-            // x <= 0, x = 0 -> -1
-            // ~x = -x-1
-            number.sign = 1; // -x
-            BigInt One;
-            One.SetData(10,"1");
-            return number - One; //-x-1
-        }
-        else
-        {
-            number.data2 = toBinary(number).data;
-        }
+    BigInt res;
+    res.base = number.base;
+    res.sign = number.sign * -1;
+    if(res.base == 10){
+        number = toBinary(number);
     }
-    for (int i = 0; i < number.data2.size(); i++) {
-        number.data2[i] = (number.data2[i] == '0') ? '1' : '0';
+    for (int i = 0; i < number.data.size(); i++) {
+        res.data += (number.data[i] == '0') ? "1" : "0";
     }
-    return number;
+    if(res.base == 10){
+        res = toDecimal(res);
+    }
+    return res;
 }
 
 BigInt operator-(BigInt num1, BigInt num2)
 {
     BigInt res;
     res.base = num1.base;
+    if(res.base == 2){
+        num1 = toDecimal(num1);
+        num2 = toDecimal(num2);
+    }
     if (num1.sign == -1 && num2.sign == -1) { // am - am -2-(-3) = 3 - 2
         num1.sign = num2.sign = 1;
         swap(num1, num2);
@@ -147,7 +159,7 @@ BigInt operator-(BigInt num1, BigInt num2)
     while (res.data.length() > 1 && res.data[0] == '0')
         res.data.erase(0, 1);
     if(res.base == 2){
-        res.data2 = toBinary(res).data2;
+        res.data = toBinary(res).data;
     }
     return res;
 }
@@ -182,21 +194,25 @@ BigInt operator+(BigInt num1, BigInt num2)
 {
     BigInt res;
     res.base = num1.base;
+    if(res.base == 2){
+        num1 = toDecimal(num1);
+        num2 = toDecimal(num2);
+    }
     if (num1.sign == -1 && num2.sign == -1) //am + am
     {
         res.sign = -1;
     }
-    else //duong + duong
-    {
-        res.sign = 1;
-    }
-    if (num1.sign == 1 && num2.sign == -1) { // duong + am
+    else if (num1.sign == 1 && num2.sign == -1) { // duong + am
         num2.sign = 1;
         return num1 - num2;
     }
-    if (num1.sign == -1 && num2.sign == 1) { // am + duong
+    else if (num1.sign == -1 && num2.sign == 1) { // am + duong
         num1.sign = 1;
         return num2 - num1;
+    }
+    else //duong + duong
+    {
+        res.sign = 1;
     }
     addZero(num1, num2);
     int carry = 0;
@@ -210,19 +226,18 @@ BigInt operator+(BigInt num1, BigInt num2)
     if (carry > 0)
         res.data = "1" + res.data;
     if(res.base == 2){
-        res.data2 = toBinary(res).data2;
+        res = toBinary(res);
     }
     return res;
 }
-BigInt operator*(const BigInt num1, const BigInt num2)
+BigInt operator*(BigInt num1, BigInt num2)
 {
     BigInt res;
     res.base = num1.base;
     res.sign = num1.sign * num2.sign;
-    if (num1.data == "0" || num2.data == "0")
-    {
-        res.data = "0";
-        return res;
+    if(res.base == 2){
+        num1 = toDecimal(num1);
+        num2 = toDecimal(num2);
     }
     int n = num1.data.length();
     int m = num2.data.length();
@@ -243,7 +258,7 @@ BigInt operator*(const BigInt num1, const BigInt num2)
     while (res.data.length() > 1 && res.data[0] == '0')
         res.data.erase(0, 1);
     if(res.base == 2){
-        res.data2 = toBinary(res).data2;
+        res = toBinary(res);
     }
     return res;
 }
