@@ -109,6 +109,7 @@ BigInt operator~(BigInt number) {
 BigInt operator-(BigInt num1, BigInt num2)
 {
     BigInt res;
+    res.base = num1.base;
     if (num1.sign == -1 && num2.sign == -1) { // am - am -2-(-3) = 3 - 2
         num1.sign = num2.sign = 1;
         swap(num1, num2);
@@ -145,6 +146,9 @@ BigInt operator-(BigInt num1, BigInt num2)
     }
     while (res.data.length() > 1 && res.data[0] == '0')
         res.data.erase(0, 1);
+    if(res.base == 2){
+        res.data2 = toBinary(res).data2;
+    }
     return res;
 }
 BigInt operator/(const BigInt number, const int divisor)
@@ -177,6 +181,7 @@ BigInt operator/(const BigInt number, const int divisor)
 BigInt operator+(BigInt num1, BigInt num2)
 {
     BigInt res;
+    res.base = num1.base;
     if (num1.sign == -1 && num2.sign == -1) //am + am
     {
         res.sign = -1;
@@ -204,11 +209,16 @@ BigInt operator+(BigInt num1, BigInt num2)
     }
     if (carry > 0)
         res.data = "1" + res.data;
+    if(res.base == 2){
+        res.data2 = toBinary(res).data2;
+    }
     return res;
 }
 BigInt operator*(const BigInt num1, const BigInt num2)
 {
     BigInt res;
+    res.base = num1.base;
+    res.sign = num1.sign * num2.sign;
     if (num1.data == "0" || num2.data == "0")
     {
         res.data = "0";
@@ -232,6 +242,9 @@ BigInt operator*(const BigInt num1, const BigInt num2)
     }
     while (res.data.length() > 1 && res.data[0] == '0')
         res.data.erase(0, 1);
+    if(res.base == 2){
+        res.data2 = toBinary(res).data2;
+    }
     return res;
 }
 
