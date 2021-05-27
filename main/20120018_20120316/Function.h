@@ -9,3 +9,7 @@ BigInt toDecimal(BigInt number);
 BigInt Abs(BigInt number);
 BigInt Min(BigInt& num1, BigInt& num2);
 BigInt Max(BigInt& num1, BigInt& num2);
+BigInt pow(BigInt num);
+long digits(BigInt num);
+string To_string(BigInt num);
+bool is_prime(BigInt num);

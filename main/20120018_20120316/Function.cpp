@@ -1,15 +1,23 @@
+#include<string>
 #include "Struct.h"
 #include "Operator.h"
 #include "Function.h"
 
 int compare(BigInt a, BigInt b)//a > b = 1 | a < b = -1 | a == b = 0
 {
-    if (a.data.length() > b.data.length()) return 1;
-    if (a.data.length() < b.data.length()) return -1;
+    if (a.sign != b.sign) return (a.sign > b.sign) ? 1 : -1;
+    if (a.data.length() != b.data.length())
+    {
+        if(a.sign > 0)
+            return (a.data.length() > b.data.length()) ? 1 : -1;
+        else 
+            return (a.data.length() < b.data.length()) ? 1 : -1;
+    }
+    // if two lengths are the same
     for (int i = 0; i < a.data.length(); i++)
     {
-        if (a.data[i] > b.data[i]) return 1;
-        if (a.data[i] < b.data[i]) return -1;
+        if (a.data[i] > b.data[i]) return (a.sign > 0) ? 1 : -1;
+        if (a.data[i] < b.data[i]) return (a.sign > 0) ? -1 : 1;
     }
     return 0;
 }
@@ -119,18 +127,32 @@ BigInt pow(BigInt num) {
 long digits(BigInt num) {
     BigInt res;
     if (num.base == 2) {
-        res = toDecimal(num);
+        res = toDecimal(num); 
     }
     else res.data = num.data;
     return res.data.size();
 }
 
-string to_string(BigInt num) {
+string To_string(BigInt num) {
+    if (num.base == 10 && num.sign == -1){
+        return '-' + num.data;
+    }
     return num.data;
 }
 // to_base dung con tro ham
 
 bool is_prime(BigInt num) {
-    //do something here
+    if(num.base == 2){
+        num.data = toDecimal(num).data;
+    }
+    if(num.data.size() >= 7){
+        return ((num.data.back() - '0') % 2);
+    }
+    int Int = stoi(num.data);
+    for(int i = 2; i*i <= Int; i++){
+        if(Int%i == 0){
+            return false;
+        }
+    }
     return true;
 }

@@ -118,6 +118,7 @@ BigInt operator-(BigInt num1, BigInt num2)
 {
     BigInt res;
     res.base = num1.base;
+    res.sign = 1;
     if(res.base == 2){
         num1 = toDecimal(num1);
         num2 = toDecimal(num2);
@@ -138,7 +139,7 @@ BigInt operator-(BigInt num1, BigInt num2)
         return num1 + num2;
     }
     addZero(num1, num2);
-    if (num1.data < num2.data)
+    if (compare(num1, num2) == -1)
     {
         swap(num1.data, num2.data);
         res.sign = -1;
@@ -263,16 +264,63 @@ BigInt operator*(BigInt num1, BigInt num2)
     return res;
 }
 
-BigInt operator%(BigInt a, BigInt b) {
-    
+BigInt operator%(BigInt num1, BigInt num2) {
     BigInt res;
-    res.sign = 1;
-    if (a.data == b.data) {
-        res.sign = 0;
-        res.data = "0";
-        return res;
+    res.base = num1.base;
+    res.sign = num1.sign;
+    num1.sign = num2.sign = 1;
+    if(res.base == 2){
+        num1.data = toDecimal(num1).data;
+        num2.data = toDecimal(num2).data;
+    }
+    BigInt div = num1 / num2;
+    res.data = (num1 - (div * num2)).data;
+    if(res.base == 2){
+        res.data = toBinary(res).data;
     }
     return res;
 }
 
-    
+BigInt operator/(BigInt num1, BigInt num2)
+{
+    BigInt res;
+    res.base = num1.base;
+    if(num2.sign == 0){
+        res.data =  "Loi chia cho 0 !!!";
+        return res;
+    }
+    res.sign = num1.sign * num2.sign;
+    if(res.base == 2){
+        num1.data = toDecimal(num1).data;
+        num2.data = toDecimal(num2).data;
+    }
+    num1.sign = 1;
+    num2.sign = 1;
+    if(compare(num1, num2) == -1){
+        res.sign = 0;
+        res.data = '0';
+        return res;
+    }
+    BigInt tmp;
+    tmp.base = 10;
+    tmp.sign = 1;
+    int i = 0;
+    while(compare(tmp, num2) < 0 && i < num1.data.size()) {
+        tmp.data += num1.data[i];
+        i++;
+    }
+    while (i <= num1.data.size()){
+        int div = 0;
+        while((tmp - num2).sign == 1){
+            tmp = tmp - num2;
+            div++;
+        }
+        res.data += char(div + '0');
+        tmp.data += num1.data[i];
+        i++;
+    }
+    if(res.base == 2){
+        res.data = toBinary(res).data;
+    }
+    return res;
+}

@@ -10,6 +10,11 @@ using namespace std;
 
 int main()//int argc, char** argv)
 {
+    BigInt a, b;
+    a.SetData(10, "-9");
+    b.SetData(10, "7");
+    cout << To_string(a % b) << endl;
+    return 0;
     const char* inp = "input.txt";//argv[1];
     const char* out = "output.txt";//argv[2];
     freopen(inp, "r", stdin);
@@ -27,43 +32,43 @@ int main()//int argc, char** argv)
         //cout << endl << push[2] << endl;
         if (push[0] == "10" && push[1] == "2") {
             num.SetData(10,push[2]);
-            cout << toBinary(num).PrintData()<< endl;
+            cout << To_string(toBinary(num)) << endl;
         }
         else if (push[0] == "2" && push[1] == "10") {
             num.SetData(2,push[2]);
-            cout << toDecimal(num).PrintData()<< endl;
+            cout << To_string(toDecimal(num)) << endl;
         }
         else if (push[1] == "~") {
             num.SetData(base, push[2]);
-            cout << (~num).PrintData() << endl;
+            cout << To_string(~num) << endl;
         }
         else {
             num1.SetData(base, push[1]);
             num2.SetData(base, push[3]);
             if (push[2] == "+")
-                cout << (num1 + num2).PrintData() << endl;
+                cout << To_string(num1 + num2) << endl;
             else if (push[2] == "-")
-                cout << (num1 - num2).PrintData() << endl;
+                cout << To_string(num1 - num2) << endl;
             else if (push[2] == "*")
-                cout << (num1 * num2).PrintData() << endl;
+                cout << To_string(num1 * num2) << endl;
             else if (push[2] == "%")
-                cout << (num1 % num2).PrintData() << endl;
+                cout << To_string(num1 % num2) << endl;
             else if (push[2] == ">>") {
                 int move = stoi(push[3]);
-                cout << (num1 >> move).PrintData() << endl;
+                cout << To_string(num1 >> move) << endl;
             }
             else if (push[2] == "<<") {
                 int move = stoi(push[3]);
-                cout << (num1 << move).PrintData() << endl;
+                cout << To_string(num1 << move) << endl;
             }
             else if (push[2] == "&") {
-               cout << (num1 & num2).PrintData() << endl;
+               cout << To_string(num1 & num2) << endl;
             }
             else if (push[2] == "|") {
-                cout << (num1 | num2).PrintData()<<endl;
+                cout << To_string(num1 | num2)<<endl;
             }
-            else if (push[2] == "^") { 
-                cout << (num1 ^ num2).PrintData()<<endl;
+            else if (push[2] == "^") {
+                cout << To_string(num1 ^ num2) << endl;
             }
         }
     }

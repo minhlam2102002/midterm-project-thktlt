@@ -26,10 +26,4 @@ struct BigInt
             data.erase(0, 1);
         }
     }
-    string PrintData() {
-        if (base == 10 && sign == -1){
-            return '-' + data;
-        }
-        return data;
-    }
 };
