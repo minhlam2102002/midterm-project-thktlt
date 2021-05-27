@@ -119,10 +119,53 @@ BigInt Max(BigInt& num1, BigInt& num2) {
         return num1;
     return num2;
 }
+BigInt To_base(BigInt num, int base){
+    BigInt res, BASE;
+    BASE.SetData(10, to_string(base));
+    res.sign = num.sign;
+    num.sign = 1;
+    while(num.sign > 0){
+        string tmp = (num % BASE).data;
+        reverse(tmp.begin(), tmp.end());
+        res.data +=  tmp + ' ';
+        num = num / BASE;
+    }
+    reverse(res.data.begin(), res.data.end());
+    if(res.sign == -1){
+        res.data[0] = '-';
+    }else{
+        res.data.erase(0, 1);
+    }
+    return res;
+}
 
-BigInt pow(BigInt num) {
-    //do sth pow here
-    return num;
+BigInt Pow(BigInt num, BigInt p) {
+    BigInt One, res;
+    One.SetData(num.base, "1");
+    if(p.data == "0"){
+        return One;
+    }
+    if(p.data.size() >= 7){
+        res.data = "So lon qua, tui em khong tinh ra a :<<";
+        return res;
+    }
+    res.base = num.base;
+    if (res.base == 2) 
+    {
+        num = toDecimal(num);
+        p = toDecimal(p);
+    }
+    BigInt tmp;
+    tmp.SetData(10, "1");
+    int IntP = stoi(p.data);
+    for (int i = 0; i < IntP; i++) {
+        tmp = tmp * num;
+    }
+    res.data = tmp.data;
+    if(res.base == 2){
+        res = toBinary(res);
+    }
+    return res;
 }
 long digits(BigInt num) {
     BigInt res;

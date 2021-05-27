@@ -10,12 +10,14 @@ using namespace std;
 
 int main()//int argc, char** argv)
 {
-    BigInt a, b;
-    a.SetData(10, "-9");
-    b.SetData(10, "7");
-    cout << To_string(a % b) << endl;
-    return 0;
-    const char* inp = "input.txt";//argv[1];
+    /*BigInt a, b;    
+    a.SetData(10, "9246");
+    b.SetData(10, "3");
+    cout << To_string(Pow(a,b)) << endl;
+    cout << "endl1 " << endl;
+    cout << To_string(To_base(a,56)) << endl;
+    return 0;*/
+    const char* inp = "D:\INPUTHung.txt";//argv[1];
     const char* out = "output.txt";//argv[2];
     freopen(inp, "r", stdin);
     freopen(out, "w", stdout);
@@ -29,7 +31,6 @@ int main()//int argc, char** argv)
             push.push_back(word) ;
         }
         base = stoi(push[0]);
-        //cout << endl << push[2] << endl;
         if (push[0] == "10" && push[1] == "2") {
             num.SetData(10,push[2]);
             cout << To_string(toBinary(num)) << endl;
