@@ -86,16 +86,6 @@ BigInt toDecimal(BigInt number)
     res.sign = Sign; 
     return res;
 }
-BigInt Max(BigInt& num1, BigInt& num2) {
-    if (compare(num1, num2) == 1)
-        return num1;
-    return num2;
-}
-BigInt Min(BigInt& num1, BigInt& num2) {
-    if (compare(num1, num2) == 1)
-        return num2;
-    return num1;
-}
 
 BigInt Abs(BigInt number) {
     if(number.sign == 1) return number;
@@ -110,4 +100,37 @@ BigInt Abs(BigInt number) {
         number.sign = 1;
         return number;
     }
+}
+BigInt Min(BigInt& num1, BigInt& num2) {
+    if (compare(num1, num2) == 1)
+        return num2;
+    return num1;
+}
+BigInt Max(BigInt& num1, BigInt& num2) {
+    if (compare(num1, num2) == 1)
+        return num1;
+    return num2;
+}
+
+BigInt pow(BigInt num) {
+    //do sth pow here
+    return num;
+}
+long digits(BigInt num) {
+    BigInt res;
+    if (num.base == 2) {
+        res = toDecimal(num);
+    }
+    else res.data = num.data;
+    return res.data.size();
+}
+
+string to_string(BigInt num) {
+    return num.data;
+}
+// to_base dung con tro ham
+
+bool is_prime(BigInt num) {
+    //do something here
+    return true;
 }
