@@ -1,0 +1,36 @@
+S1111110001100001110
+
+It took 0.7555 milliseconds.
+
+1001010111001101100111
+
+It took 0.4379 milliseconds.
+
+438207
+
+It took 0.3415 milliseconds.
+
+111101000001000000000000000101000111011001010010010000000000111
+
+It took 0.3478 milliseconds.
+
+1419
+
+It took 0.2158 milliseconds.
+
+10100
+
+It took 0.0526 milliseconds.
+
+1999
+
+It took 6.1253 milliseconds.
+
+-1053252627241469633884
+
+It took 10.2001 milliseconds.
+
+-1934736088250632
+
+It took 0.1135 milliseconds.
+

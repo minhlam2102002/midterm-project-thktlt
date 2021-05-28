@@ -1,4 +1,3 @@
 ﻿  main.cpp
 C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\Struct.h(21,39): warning C4018: '>=': signed/unsigned mismatch
-C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\20120018_20120316\main.cpp(20,23): warning C4129: 'I': unrecognized character escape sequence
   20120018_20120316.vcxproj -> C:\Users\Acer\Documents\GitHub\midterm_project_thktlt\main\Debug\20120018_20120316.exe

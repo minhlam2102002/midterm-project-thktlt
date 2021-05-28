@@ -2,28 +2,34 @@
 #include <string>
 #include <cstdio>
 #include <sstream>
-#include<vector>
+#include <vector>
+#include <ctime>
+#include <ratio>
+#include <chrono>
+
 #include "Operator.h"
 #include "Struct.h"
 #include "Function.h"
 using namespace std;
 
-int main()//int argc, char** argv)
+int main(int argc, char** argv)
 {
-    /*BigInt a, b;    
-    a.SetData(10, "9246");
-    b.SetData(10, "3");
-    cout << To_string(Pow(a,b)) << endl;
-    cout << "endl1 " << endl;
-    cout << To_string(To_base(a,56)) << endl;
-    return 0;*/
-    const char* inp = "D:\INPUTHung.txt";//argv[1];
-    const char* out = "output.txt";//argv[2];
+    using namespace std::chrono;
+    const char* inp = argv[1];
+    const char* out = argv[2];
     freopen(inp, "r", stdin);
     freopen(out, "w", stdout);
     string line, word;
     int base;
+    bool checktime;
+    if(argc == 4){  //neu muon xuat thoi gian thi them checktime
+        checktime = true;
+    }
+    else{
+        checktime = false;
+    }
     while (getline(cin, line)) {
+        high_resolution_clock::time_point t1 = high_resolution_clock::now();
         BigInt num,num1,num2;
         vector<string> push;
         stringstream ss(line);
@@ -72,7 +78,15 @@ int main()//int argc, char** argv)
                 cout << To_string(num1 ^ num2) << endl;
             }
         }
+        high_resolution_clock::time_point t2 = high_resolution_clock::now();
+        duration<double, std::milli> time_span = t2 - t1;
+
+        if(checktime == true){
+            cout << endl;
+            cout << "It took " << time_span.count() << " milliseconds.";
+            cout << endl << endl;
+        }
+        // check time
     }
-    cout << "done";
     return 0;
 }

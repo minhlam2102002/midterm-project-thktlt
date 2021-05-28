@@ -48,7 +48,6 @@ BigInt toBinary(BigInt number)
         number = number / 2;
     }
     reverse(res.data.begin(), res.data.end());
-    //2 -> 0010 -> 1101 -> 1110
     if (res.sign == -1) {
         for (int i = 0; i < res.data.size(); i++) {
             res.data[i] = (res.data[i] == '0') ? '1' : '0';
@@ -75,12 +74,10 @@ BigInt toDecimal(BigInt number)
     res.base = 10;
     res.sign = number.sign;
     int Sign = res.sign;
-    if(res.sign == -1){
+    if (res.sign == -1) {
         number = ~number;
-        number = number + One;  
+        number = number + One;
     }
-    // 0011 = 1100 = 1101 = -3
-    // 1101 = 0010 = 0011 = 3
     two.SetData(10,"2");
     Pow2.SetData(10,"1");
     for (int i = number.data.size() - 1; i >= 0; i--)
@@ -182,16 +179,20 @@ string To_string(BigInt num) {
     }
     return num.data;
 }
-// to_base dung con tro ham
 
 bool is_prime(BigInt num) {
     if(num.base == 2){
         num.data = toDecimal(num).data;
     }
-    if(num.data.size() >= 7){
-        return ((num.data.back() - '0') % 2);
-    }
     int Int = stoi(num.data);
+    if(num.data.size() >= 7){
+        for (int i = 2; i * i <= 1000000; i++) {
+            if (Int % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
     for(int i = 2; i*i <= Int; i++){
         if(Int%i == 0){
             return false;

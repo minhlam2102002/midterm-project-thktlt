@@ -5,7 +5,7 @@ using namespace std;
 struct BigInt
 {
     int sign, base;
-    int numBit = 128;//000000010 -> 1111111101
+    int numBit = 128;
     string data; 
 
     BigInt& operator=(const BigInt &number) {
