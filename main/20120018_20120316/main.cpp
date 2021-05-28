@@ -31,10 +31,11 @@ int main(int argc, char** argv)
     while (getline(cin, line)) {
         high_resolution_clock::time_point t1 = high_resolution_clock::now();
         BigInt num,num1,num2;
-        vector<string> push;
+        string push[10];
+        int cnt = 0;
         stringstream ss(line);
         while (ss >> word) {
-            push.push_back(word) ;
+            push[cnt++] = word ;
         }
         base = stoi(push[0]);
         if (push[0] == "10" && push[1] == "2") {
@@ -42,7 +43,7 @@ int main(int argc, char** argv)
             cout << To_string(toBinary(num)) << endl;
         }
         else if (push[0] == "2" && push[1] == "10") {
-            num.SetData(2,push[2]);
+            num.SetData(2, push[2]);
             cout << To_string(toDecimal(num)) << endl;
         }
         else if (push[1] == "~") {
